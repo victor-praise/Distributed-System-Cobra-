@@ -1,0 +1,35 @@
+module DMTBSAPP
+{
+	interface Cinema
+	{
+		typedef string movieName;
+        typedef long capacity;
+        typedef string MyString;
+
+    // Define a sequence of MyString as a type alias
+
+            // Define a struct to represent the ticket information
+            struct TicketInfo {
+                string movieName;
+                long capacity;
+            };
+
+            // Define the map type that will be returned by the function
+            typedef sequence<TicketInfo> TicketMap;
+            typedef sequence<MyString> StringSeq;
+
+            // Define the function that returns the map
+            TicketMap listMovieShowAvailability(in string movieName);
+            boolean removeMovieSlots(in string movieID, in string movieName);
+                boolean addMovieSlots(in string movieID, in string movieName, in long bookingCapacity);
+
+                //Client Operations
+                boolean cancelMovieTickets(in string customerID, in string movieID, in string movieName, in long numberOfTickets);
+                StringSeq getBookingSchedule(in string customerID);
+                boolean bookMovieTickets(in string customerID, in string movieID, in string movieName, in long numberOfTickets);
+              boolean  exchangeTickets (in string customerID, in string movieID, in string new_movieID, in string new_movieName, in long numberOfTickets);
+                //create and write to files
+                void createFile(in string servername);
+                void writeToFile(in string message, in string servername);
+	};
+};
